@@ -1,0 +1,9 @@
+Registro de Inventarios - Agosto 2023
+
+Producto            |   Cantidad     |  Precio Unitario   |  Valor Total
+---------------------------------------------------------------------
+Madera de Roble     |   50 unidades  |  $20               |  $1,000
+Cables Eléctricos   |   200 metros   |  $1.50             |  $300
+Tornillos de Acero  |   500 unidades |  $0.10             |  $50
+
+Total de Inventarios: $1,350

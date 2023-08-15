@@ -1,0 +1,155 @@
+Configuracion etherchannel
+PagP= desirable
+Lacp= active
+manual = on
+Switch 1
+Switch(config)#int range f0/3
+Switch(config-if-range)#speed 100
+Switch(config-if-range)#duplex full
+Switch(config-if-range)#channel-group 1 mode active
+Creating a port-channel interface Port-channel 1
+
+Switch(config-if-range)#shutdown 
+Switch(config-if-range)#exit
+Switch(config)#int port-channel 1
+Switch(config-if)#sw mode trunk 
+Switch(config-if)#sw trunk allowe vlan all
+Switch(config-if)#no shutdown 
+Switch(config-if)#int range f0/1-3
+Switch(config-if-range)#no shutdown 
+
+switch 2
+
+Switch(config)#int range f0/1-3
+Switch(config-if-range)#speed 100
+Switch(config-if-range)#duplex full
+Switch(config-if-range)#channel-group 1 mode active
+Creating a port-channel interface Port-channel 1
+Switch(config-if-range)#shutdown 
+Switch(config-if-range)#exit
+Switch(config)#int port-channel 1
+Switch(config-if)#sw mode trunk
+Switch(config-if)#sw trunk allowed vlan all
+Switch(config-if)#no shutdown 
+Switch(config-if)#exit
+Switch(config)#int rang f0/1-3
+Switch(config-if-range)#no shutdown 
+
+parte del canal 4-7
+Switch(config)#int range f0/4-7
+Switch(config-if-range)#speed 100
+Switch(config-if-range)#duplex full
+Switch(config-if-range)#channel-group 2 mode desirable
+Creating a port-channel interface Port-channel 2
+Switch(config-if-range)#shutdown 
+Switch(config-if-range)#exit
+Switch(config)#int port-channel 2
+Switch(config-if)#sw mode trunk
+Switch(config-if)#sw trunk allowed vlan all
+Switch(config-if)#no shu
+Switch(config-if)#exit
+Switch(config)#int range f0/4-7
+Switch(config-if-range)#no shutdown 
+
+switch 3 
+
+Switch(config)#int range f0/4-7
+Switch(config-if-range)#speed 100
+Switch(config-if-range)#duplex full
+Switch(config-if-range)#channel-group 2 mode desirable 
+Creating a port-channel interface Port-channel 2
+Switch(config-if-range)#shutdown 
+Switch(config)#int port-channel 2
+Switch(config-if)#sw mode trunk
+Switch(config-if)#sw trunk allowed vlan all
+Switch(config-if)#no shutdown 
+Switch(config-if)#int range f0/4-7
+Switch(config-if-range)#no shut
+
+
+VTP configuracion 
+server
+Switch(config)#h S2-Server
+S2-Server(config)#vtp mode server
+Device mode already VTP SERVER.
+S2-Server(config)#vtp domain cisco
+Changing VTP domain name from NULL to cisco
+
+S2-Server(config)#vtp pass cisco
+Setting device VLAN database password to cisco
+S2-Server(config)#vlan 10
+S2-Server(config-vlan)#name diez
+S2-Server(config-vlan)#vlan 20 
+S2-Server(config-vlan)#name veinte
+S2-Server(config-vlan)#exit
+
+sw cliente
+Switch(config)#ho S1-cliente
+S1-cliente(config)#vtp mode clie
+Setting device to VTP CLIENT mode.
+S1-cliente(config)#vtp domain cisco
+Domain name already set to cisco.
+S1-cliente(config)#vtp pass cisco
+Setting device VLAN database password to cisco
+S1-cliente(config)#do show vlan bri
+Asignar puertos******
+
+sw cliente 3
+
+Switch(config-if-range)#exit
+Switch(config)#h s3-Cliente
+s3-Cliente(config)#vtp mode client
+Setting device to VTP CLIENT mode.
+s3-Cliente(config)#vtp domain cisco
+Domain name already set to cisco.
+s3-Cliente(config)#vtp pass cisco
+Setting device VLAN database password to cisco
+s3-Cliente(config)#do show vlan bri
+
+Asignar puertos******
+
+DHCP por router 
+Configurar interfaces*** asignar ip y sb interfaces con dot1q vlan ..
+ DHCP 
+r1(config)#ip dhcp pool Router
+r1(dhcp-config)#net 192.168.100.0 255.255.255.0
+r1(dhcp-config)#default-router 192.168.100.1
+r1(dhcp-config)#dns-server 192.168.100.1
+r1(dhcp-config)#domain-name www.hola.com
+r1(dhcp-config)#exit
+	PARA EXCLUIR OPCIONAL 
+r1(config)#ip dhcp excluded-address 192.168.100.1 192.168.100.200
+DHCP Para ñas vlan 
+R1
+r1(config)#ip dhcp pool vlan10
+r1(dhcp-config)#net 192.168.10.0 255.255.255.0
+r1(dhcp-config)#default-router 192.168.10.1
+r1(dhcp-config)#dns-server 192.168.10.1
+r1(dhcp-config)#domain-name www.adios.com
+Hacer lo mismo para la vlan 20 
+	HACER TRUNK el puerto del switch de dhcop
+
+DCHP Por sevidor
+1.- Ip estatica al sever
+2.- Servicios y configurar el pool default
+
+
+EIGRP 
+r1(config)#router eigrp 1
+r1(config-router)#eigrp router-id 1.1.1.1
+r1(config-router)#no auto-summary 
+r1(config-router)#net 192.168.10.0 0.0.0.255
+r1(config-router)#net 192.168.20.0 0.0.0.255
+r1(config-router)#net 192.168.100.0 0.0.0.255
+r1(config-router)#net 90.90.90.0 0.0.0.3
+r1(config-router)#exit
+router 2
+
+Router(config)#router eigrp 1
+Router(config-router)#eigrp router-id 2.2.2.2   ******** id dife
+Router(config-router)#net 192.168.30.0 0.0.0.255
+Router(config-router)#net 192.168.40.0 0.0.0.255
+Router(config-router)#net 192.168.200.0 0.0.0.255
+Router(config-router)#net 90.90.90.0 0.0.0.3
+Router(config-router)#no auto-summary 
+

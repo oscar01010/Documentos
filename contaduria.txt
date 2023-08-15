@@ -1,0 +1,18 @@
+Informe Financiero - Julio 2023
+
+Estado de Resultados:
+
+Ingresos Totales:       $150,000
+Gastos Operativos:      $60,000
+Utilidad Bruta:         $90,000
+
+Gastos Administrativos: $20,000
+Gastos Financieros:     $5,000
+Otros Gastos:           $10,000
+Utilidad Neta:          $55,000
+
+Balance General:
+
+Activos:                $200,000
+Pasivos:                $60,000
+Patrimonio Neto:        $140,000

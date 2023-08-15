@@ -1,0 +1,30 @@
+Router 1
+'''''''''''''''''''''''''''
+Router(config)#router eigrp 777
+Router(config-router)#eigrp router-id 1.1.1.1
+Router(config-router)#no auto-summary 
+Router(config-router)#network 192.168.10.0 0.0.0.255
+Router(config-router)#network 180.10.20.0 0.0.0.15
+Router(config-router)#network 80.80.80.0 0.0.0.3
+Router(config-router)#passive-interface f0/0
+Router(config-router)#passive-interface f0/1
+Router(config-router)#
+'''''''''''''''''''''''''''''''''''''
+router 2 
+'''''''''''''''''''''''''''''''''''''
+Router(config)#router eigrp 777
+Router(config-router)#eigrp router-id 2.2.2.2
+Router(config-router)#no auto-summary 
+Router(config-router)#network 192.168.20.0 0.0.0.255
+Router(config-router)#network 110.100.50.0 0.0.0.31
+Router(config-router)#network 80.80.80.0 0.0.0.3
+%DUAL-5-NBRCHANGE: IP-EIGRP 777: Neighbor 80.80.80.1 (Serial0/0/0) is up: new adjacency
+Router(config-router)#passive-interface f0/0
+Router(config-router)#passive-interface f0/1
+Router(config)#int loopback 0
+Router(config-if)#ip add 200.100.10.1 255.255.255.252
+Router(config-if)#no shutdown 
+Router(config)#ip route 0.0.0.0 0.0.0.0 loopback 0 → Ruta estatica pra que todas puedan acceder a la loopback 0
+Router(config)#router eigrp 777
+Router(config-router)#redistribute static
+Router(config-router)#

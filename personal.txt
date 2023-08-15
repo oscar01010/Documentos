@@ -1,0 +1,9 @@
+Registro de Personal - Agosto 2023
+
+Nombre             |   Puesto            |  Departamento   |  Fecha de Ingreso
+---------------------------------------------------------------------
+Ana López          |   Gerente General   |  Dirección      |  05-02-2010
+Pedro Martínez     |   Asistente         |  Administración |  12-09-2018
+Carlos Sánchez     |   Técnico           |  Producción     |  20-03-2021
+
+Total de Empleados: 3

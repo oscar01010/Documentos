@@ -1,0 +1,9 @@
+Registro de Nóminas - Agosto 2023
+
+Nombre              |   Puesto         |  Salario   |  Deducciones |  Total Pago
+---------------------------------------------------------------------
+María Pérez         |   Gerente        |  $5,000    |  $500        |  $4,500
+Juan Rodríguez      |   Asistente      |  $3,000    |  $300        |  $2,700
+Laura Gómez         |   Analista       |  $4,500    |  $450        |  $4,050
+
+Total de Nómina: $11,250
